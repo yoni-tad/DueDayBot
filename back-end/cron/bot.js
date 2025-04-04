@@ -41,7 +41,7 @@ bot.onText(/\/start/, async (msg) => {
         [
           {
             text: "🚀 Open Mini App",
-            web_app: { url: "https://your-mini-app-url.com" },
+            web_app: { url: "https://due-day-bot.vercel.app" },
           },
         ],
       ],
