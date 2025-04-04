@@ -5,13 +5,18 @@ import { useEffect, useState } from "react";
 import Add from "./components/Add";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+window.Telegram.WebApp.ready();
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [userData, setUserData] = useState([]);
   const [schedules, setSchedules] = useState([]);
   const navigate = useNavigate();
-  const telegramId = 2146933543;
+  const user = window.Telegram.WebApp.initDataUnsafe.user;
+  if (user) {
+    const telegramId = user.id;
+    console.log("Telegram ID:", telegramId);
+  }
 
   const showToastMessage = (text, type = "success") => {
     toast[type](text, {
@@ -49,7 +54,7 @@ export default function App() {
       title: userData.title,
       description: userData.description,
       forDate: forDate,
-      reminder: userData.reminder ?? '30 minutes',
+      reminder: userData.reminder ?? "30 minutes",
     };
 
     try {
@@ -76,13 +81,16 @@ export default function App() {
 
   const getSchedules = async (telegramId) => {
     try {
-      const response = await fetch(`https://duedaybot.onrender.com/api/schedules`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ telegramId }),
-      });
+      const response = await fetch(
+        `https://duedaybot.onrender.com/api/schedules`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ telegramId }),
+        }
+      );
 
       const data = await response.json();
       setSchedules(data);
@@ -93,12 +101,15 @@ export default function App() {
 
   const deleteSchedule = async (id) => {
     try {
-      const response = await fetch(`https://duedaybot.onrender.com/api/schedule/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://duedaybot.onrender.com/api/schedule/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       const data = await response.json();
       showToastMessage("Delete successfully!", "success");
