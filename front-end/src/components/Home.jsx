@@ -59,12 +59,14 @@ export default function Home(props) {
     });
   };
 
-  const filteredSchedules = props.schedules.filter((schedule) => {
-    if (!schedule.forDate) return false;
-    const scheduleDate = new Date(schedule.forDate).toDateString();
-    const todayDate = new Date(currentDate).toDateString();
-    return scheduleDate === todayDate;
-  });
+  const filteredSchedules = Array.isArray(props.schedules)
+    ? props.schedules.filter((schedule) => {
+        if (!schedule.forDate) return false;
+        const scheduleDate = new Date(schedule.forDate).toDateString();
+        const todayDate = new Date(currentDate).toDateString();
+        return scheduleDate === todayDate;
+      })
+    : [];
 
   return (
     <div className="flex flex-col text-white h-full w-full py-4 px-4">
@@ -119,20 +121,24 @@ export default function Home(props) {
       </div>
 
       <div className="flex-grow overflow-y-auto">
-        {filteredSchedules.length > 0
-          ? filteredSchedules.map((schedule) => {
-              return (
-                <Items
-                  key={schedule._id}
-                  id={schedule._id}
-                  date={formatDate(schedule.forDate)}
-                  title={schedule.title}
-                  description={schedule.description}
-                  deleteItem={() => props.deleteSchedule(schedule._id)}
-                />
-              );
-            })
-          : <p className="text-center text-xl font-semibold">No schedules for today.</p>}
+        {filteredSchedules.length > 0 ? (
+          filteredSchedules.map((schedule) => {
+            return (
+              <Items
+                key={schedule._id}
+                id={schedule._id}
+                date={formatDate(schedule.forDate)}
+                title={schedule.title}
+                description={schedule.description}
+                deleteItem={() => props.deleteSchedule(schedule._id)}
+              />
+            );
+          })
+        ) : (
+          <p className="text-center text-xl font-semibold">
+            No schedules for today.
+          </p>
+        )}
       </div>
     </div>
   );
