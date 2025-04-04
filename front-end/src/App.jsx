@@ -54,7 +54,7 @@ export default function App() {
 
     try {
       const response = await fetch(
-        `http://localhost:3000/api/create-schedule`,
+        `https://duedaybot.onrender.com/api/create-schedule`,
         {
           method: "POST",
           headers: {
@@ -76,7 +76,7 @@ export default function App() {
 
   const getSchedules = async (telegramId) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/schedules`, {
+      const response = await fetch(`https://duedaybot.onrender.com/api/schedules`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ export default function App() {
 
   const deleteSchedule = async (id) => {
     try {
-      const response = await fetch(`http://localhost:3000/api/schedule/${id}`, {
+      const response = await fetch(`https://duedaybot.onrender.com/api/schedule/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
