@@ -56,7 +56,6 @@ cron.schedule("* * * * *", async () => {
         const user = await User.findOne({ _id: task.userId });
         if (!user) {
           console.log("Usr not found!");
-          await Schedule.deleteOne({ _id: task._id });
         }
 
         const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
