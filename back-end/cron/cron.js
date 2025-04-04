@@ -62,7 +62,7 @@ cron.schedule("* * * * *", async () => {
         //   task.description || ""
         // }`;
         // await sendTelegramMessage(user.telegramId, message);
-        console.log(`📢 Reminder sent: ${task.title}`);
+        console.log(`📢 Reminder sent: ${task.title} ${user.telegramId}`);
       }
 
       if (now >= task.forDate) {
@@ -71,7 +71,7 @@ cron.schedule("* * * * *", async () => {
         }`;
         // await sendTelegramMessage(user.telegramId, message);
         // await Schedule.deleteOne({ _id: task._id });
-        console.log(`✅ Task deleted (event passed): ${task.title}`);
+        console.log(`✅ Task deleted (event passed): ${task.title} ${user.telegramId}`);
       }
     }
   } catch (error) {
