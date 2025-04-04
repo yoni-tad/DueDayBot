@@ -14,6 +14,7 @@ export default function App() {
   const navigate = useNavigate();
   const [telegramId, setTelegramId] = useState(null);
 
+
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.ready();
@@ -23,8 +24,7 @@ export default function App() {
       }
     }
   }, []);
-
-  console.log("Telegram ID:", telegramId);
+  // const telegramId = 2146933543;
 
   const showToastMessage = (text, type = "success") => {
     toast[type](text, {

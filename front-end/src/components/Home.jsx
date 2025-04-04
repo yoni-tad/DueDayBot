@@ -60,6 +60,7 @@ export default function Home(props) {
   };
 
   const filteredSchedules = props.schedules.filter((schedule) => {
+    if (!schedule.forDate) return false;
     const scheduleDate = new Date(schedule.forDate).toDateString();
     const todayDate = new Date(currentDate).toDateString();
     return scheduleDate === todayDate;
