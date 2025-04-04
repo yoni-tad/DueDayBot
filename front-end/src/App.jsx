@@ -128,12 +128,12 @@ export default function App() {
     }
   };
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     getSchedules(telegramId);
-  //     setIsLoading(false);
-  //   }, 3000);
-  // }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      getSchedules(telegramId);
+      setIsLoading(false);
+    }, 3000);
+  }, []);
 
   return isLoading ? (
     <Splash />
