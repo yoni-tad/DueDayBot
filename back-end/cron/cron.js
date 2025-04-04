@@ -52,26 +52,28 @@ cron.schedule("* * * * *", async () => {
         task.forDate.getTime() - reminderMin * 60000
       );
 
-      if (now >= reminderTime && now < task.forDate) {
-        const user = await User.findOne({ _id: task.userId });
-        if (!user) {
-          console.error("Usr not found!");
-        }
+      const user = await User.findOne({ _id: task.userId });
+      if (!user) {
+        console.error("Usr not found!");
+      }
 
-        // const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
-        //   task.description || ""
-        // }`;
-        // await sendTelegramMessage(user.telegramId, message);
-        console.log(`📢 Reminder sent: ${task.title} ${user.telegramId}`);
+      if (now >= reminderTime && now < task.forDate) {
+        const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
+          task.description || ""
+        }`;
+        await sendTelegramMessage(user.telegramId, message);
+        console.log(`📢 Reminder sent: ${task.title}`);
       }
 
       if (now >= task.forDate) {
         const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
           task.description || ""
         }`;
-        // await sendTelegramMessage(user.telegramId, message);
-        // await Schedule.deleteOne({ _id: task._id });
-        console.log(`✅ Task deleted (event passed): ${task.title} ${user.telegramId}`);
+        await sendTelegramMessage(user.telegramId, message);
+        await Schedule.deleteOne({ _id: task._id });
+        console.log(
+          `✅ Task deleted (event passed): ${task.title} ${user.telegramId}`
+        );
       }
     }
   } catch (error) {
