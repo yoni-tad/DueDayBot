@@ -19,8 +19,6 @@ Never forget an assignment, deadline, or important date again. I'm here to keep 
 
 🔗 Ready to Get Started? Click the button below to open the web app and set up your first reminder! 🚀
 
-👇 [Open Due Day Web App]
-
 👨‍💻 Developed with @yonitad0💡 a dev who also forgets deadlines sometimes! 🤣`;
 
 bot.onText(/\/start/, async (msg) => {

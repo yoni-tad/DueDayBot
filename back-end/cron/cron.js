@@ -58,10 +58,10 @@ cron.schedule("* * * * *", async () => {
           console.error("Usr not found!");
         }
 
-        const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
-          task.description || ""
-        }`;
-        await sendTelegramMessage(user.telegramId, message);
+        // const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
+        //   task.description || ""
+        // }`;
+        // await sendTelegramMessage(user.telegramId, message);
         console.log(`📢 Reminder sent: ${task.title}`);
       }
 
@@ -69,8 +69,8 @@ cron.schedule("* * * * *", async () => {
         const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
           task.description || ""
         }`;
-        await sendTelegramMessage(user.telegramId, message);
-        await Schedule.deleteOne({ _id: task._id });
+        // await sendTelegramMessage(user.telegramId, message);
+        // await Schedule.deleteOne({ _id: task._id });
         console.log(`✅ Task deleted (event passed): ${task.title}`);
       }
     }
