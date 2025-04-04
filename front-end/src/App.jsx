@@ -13,10 +13,23 @@ export default function App() {
   const [schedules, setSchedules] = useState([]);
   const navigate = useNavigate();
   const user = window.Telegram.WebApp.initDataUnsafe.user;
-  if (user) {
-    const telegramId = user.id;
-    console.log("Telegram ID:", telegramId);
-  }
+  
+  useEffect(() => {
+    if (window.Telegram && window.Telegram.WebApp) {
+      window.Telegram.WebApp.ready();
+      const user = window.Telegram.WebApp.initDataUnsafe?.user;
+  
+      if (user) {
+        const telegramId = user.id;F
+        console.log("Telegram ID:", telegramId);
+      } else {
+        console.log("User data is unavailable.");
+      }
+    } else {
+      console.log("Telegram WebApp SDK is not available.");
+    }
+  }, []);
+  
 
   const showToastMessage = (text, type = "success") => {
     toast[type](text, {
