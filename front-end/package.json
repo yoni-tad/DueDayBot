@@ -10,8 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@heroui/date-picker": "^2.3.16",
+    "@meinefinsternis/react-horizontal-date-picker": "^1.0.1",
+    "@tailwindcss/vite": "^4.1.2",
+    "@vaadin/date-time-picker": "^24.7.2",
+    "lucide-react": "^0.487.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.4.1",
+    "react-toastify": "^11.0.5",
+    "tailwindcss": "^4.1.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
