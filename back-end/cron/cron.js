@@ -67,6 +67,10 @@ cron.schedule("* * * * *", async () => {
       }
 
       if (now >= task.forDate) {
+        const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
+          task.description || ""
+        }`;
+        await sendTelegramMessage(user.telegramId, message);
         await Schedule.deleteOne({ _id: task._id });
         console.log(`✅ Task deleted (event passed): ${task.title}`);
       }
