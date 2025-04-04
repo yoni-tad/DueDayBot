@@ -1,4 +1,5 @@
-const cron = require('./cron/bot')
+const cron = require('./cron/cron')
+const bot = require('./cron/bot')
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
