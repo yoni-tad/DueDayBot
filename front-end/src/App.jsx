@@ -87,7 +87,6 @@ export default function App() {
       const data = await response.json();
       setSchedules(data);
     } catch (error) {
-      showToastMessage("Please try again!", "error");
       console.error("Error creating schedule:", error);
     }
   };
