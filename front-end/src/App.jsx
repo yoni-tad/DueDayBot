@@ -21,7 +21,6 @@ export default function App() {
   
       if (user) {
         const telegramId = user.id;
-        console.log("Telegram ID:", telegramId);
       } else {
         console.log("User data is unavailable.");
       }
