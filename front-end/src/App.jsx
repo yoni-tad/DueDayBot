@@ -20,7 +20,7 @@ export default function App() {
       const user = window.Telegram.WebApp.initDataUnsafe?.user;
   
       if (user) {
-        const telegramId = user.id;F
+        const telegramId = user.id;
         console.log("Telegram ID:", telegramId);
       } else {
         console.log("User data is unavailable.");
