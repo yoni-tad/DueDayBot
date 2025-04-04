@@ -13,14 +13,14 @@ export default function App() {
   const [schedules, setSchedules] = useState([]);
   const navigate = useNavigate();
   const user = window.Telegram.WebApp.initDataUnsafe.user;
-  
+  let telegramId;
   useEffect(() => {
     if (window.Telegram && window.Telegram.WebApp) {
       window.Telegram.WebApp.ready();
       const user = window.Telegram.WebApp.initDataUnsafe?.user;
   
       if (user) {
-        const telegramId = user.id;
+        telegramId = user.id;
       } else {
         console.log("User data is unavailable.");
       }
