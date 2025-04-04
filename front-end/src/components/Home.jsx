@@ -69,8 +69,15 @@ export default function Home(props) {
     : [];
 
   return (
-    <div className="flex flex-col text-white h-full w-full py-4 px-4">
-      <div className="flex flex-col mb-4">
+    <div className="flex flex-col h-full w-full py-4">
+      <div className="flex items-center justify-between mb-2 px-2">
+        <p className="text-3xl font-bold">DueDay</p>
+        <div className="bg-gray-200 rounded-full text-gray-800 p-2">
+          <Plus onClick={() => navigate('/add')}/>
+        </div>
+      </div>
+
+      <div className="flex flex-col my-4 bg-yellow-200/50 p-4 rounded-2xl">
         <div className="flex items-center justify-between">
           <button onClick={handlePrevMonth} className="cursor-pointer">
             <ChevronLeft />
@@ -100,9 +107,9 @@ export default function Home(props) {
                 <p
                   onClick={() => setCurrentDate(date)}
                   key={index}
-                  className={`cursor-pointer font-bold py-2 mx-1 ${
+                  className={`cursor-pointer font-bold py-2.5 mx-1 ${
                     date.toDateString() === new Date().toDateString()
-                      ? "rounded bg-blue-400"
+                      ? "rounded bg-yellow-400"
                       : ""
                   }`}
                 >
@@ -112,15 +119,9 @@ export default function Home(props) {
             })}
           </div>
         </div>
-        <hr className="text-gray-600 px-4" />
       </div>
 
-      <div className="flex items-center justify-between mb-4">
-        <p className="text-xl font-bold">Schedules</p>
-        <Plus className="cursor-pointer" onClick={() => navigate("/add")} />
-      </div>
-
-      <div className="flex-grow overflow-y-auto">
+      <div className="my-4 flex-grow overflow-y-auto px-2">
         {filteredSchedules.length > 0 ? (
           filteredSchedules.map((schedule) => {
             return (

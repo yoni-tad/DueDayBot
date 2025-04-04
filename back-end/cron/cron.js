@@ -55,9 +55,7 @@ cron.schedule("* * * * *", async () => {
       if (now >= reminderTime && now < task.forDate) {
         const user = await User.findOne({ _id: task.userId });
         if (!user) {
-          console.error("User" + User);
-          console.error("forDate" + task.forDate);
-          console.error("Usr not found!" + task.userId);
+          console.error("Usr not found!");
         }
 
         const message = `🚀 Reminder for: ${task.title}\n\n—————————————\n ${
