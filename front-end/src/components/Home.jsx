@@ -71,13 +71,13 @@ export default function Home(props) {
   return (
     <div className="flex flex-col h-full w-full py-4">
       <div className="flex items-center justify-between mb-2 px-2">
-        <p className="text-3xl font-bold">DueDay</p>
-        <div className="bg-gray-200 rounded-full text-gray-800 p-2">
+        <p className="text-3xl font-bold text-yellow-400">DueDay</p>
+        <div className="bg-yellow-100 rounded-full text-gray-800 p-2">
           <Plus onClick={() => navigate('/add')}/>
         </div>
       </div>
 
-      <div className="flex flex-col my-4 bg-yellow-200/50 p-4 rounded-2xl">
+      <div className="flex flex-col my-4 bg-yellow-200 p-4 rounded-2xl">
         <div className="flex items-center justify-between">
           <button onClick={handlePrevMonth} className="cursor-pointer">
             <ChevronLeft />

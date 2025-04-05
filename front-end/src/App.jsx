@@ -8,23 +8,23 @@ import "react-toastify/dist/ReactToastify.css";
 window.Telegram.WebApp.ready();
 
 export default function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [userData, setUserData] = useState([]);
   const [schedules, setSchedules] = useState([]);
   const navigate = useNavigate();
-  const [telegramId, setTelegramId] = useState(null);
+  // const [telegramId, setTelegramId] = useState(null);
 
 
-  useEffect(() => {
-    if (window.Telegram && window.Telegram.WebApp) {
-      window.Telegram.WebApp.ready();
-      const user = window.Telegram.WebApp.initDataUnsafe?.user;
-      if (user) {
-        setTelegramId(user.id); // Store Telegram ID in state
-      }
-    }
-  }, []);
-  // const telegramId = 2146933543;
+  // useEffect(() => {
+  //   if (window.Telegram && window.Telegram.WebApp) {
+  //     window.Telegram.WebApp.ready();
+  //     const user = window.Telegram.WebApp.initDataUnsafe?.user;
+  //     if (user) {
+  //       setTelegramId(user.id); // Store Telegram ID in state
+  //     }
+  //   }
+  // }, []);
+  const telegramId = 2146933543;
 
   const showToastMessage = (text, type = "success") => {
     toast[type](text, {

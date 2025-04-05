@@ -7,9 +7,11 @@ export default function Add(props) {
   return (
     <div className="w-full p-4">
       <div className="flex items-center justify-between">
-        <X className="cursor-pointer" onClick={() => navigate("/")} />
+        <div className="bg-yellow-100 rounded-full text-gray-800 p-2">
+          <X className="cursor-pointer " onClick={() => navigate("/")} />
+        </div>
         <button
-          className="bg-yellow-400 px-4 py-2 rounded-full cursor-pointer"
+          className="bg-yellow-400 text-xl px-4 py-2 rounded-full cursor-pointer"
           onClick={props.onSubmit}
         >
           Save
@@ -24,18 +26,18 @@ export default function Add(props) {
             name="title"
             onChange={props.handleOnChange}
             placeholder="Add title"
-            className="text-gray-800 border-b border-gray-400 !outline-none font-semibold w-full"
+            className="text-yellow-400 border-b border-gray-400 !outline-none font-semibold w-full"
           />
         </div>
         <div className="flex gap-2 my-4">
-          <Menu className="text-gray-400" />
+          <Menu className="text-yellow-400" />
           <textarea
             type="text"
             id="description"
             name="description"
             onChange={props.handleOnChange}
             placeholder="Add description"
-            className="border-b border-gray-400 !outline-none w-full"
+            className="text-yellow-400 border-b border-gray-400 !outline-none w-full"
           />
         </div>
 
@@ -47,7 +49,7 @@ export default function Add(props) {
               id="date"
               name="date"
               onChange={props.handleOnChange}
-              class="border leading-none border-gray-400 text-sm rounded-lg block w-full p-2.5"
+              class="text-yellow-400 border leading-none border-gray-400 text-sm rounded-lg block w-full p-2.5"
               required
             />
           </div>
@@ -59,42 +61,38 @@ export default function Add(props) {
               id="time"
               name="time"
               onChange={props.handleOnChange}
-              class="border leading-none border-gray-400 text-sm rounded-lg block w-full p-2.5"
+              class="text-yellow-400 border leading-none border-gray-400 text-sm rounded-lg block w-full p-2.5"
               required
             />
           </div>
         </div>
 
-        <div className="flex items-center gap-2 my-4">
+        <div className="flex items-center gap-2 my-4 text-yellow-400">
           <BellRing size={20} />
           <select
             name="reminder"
             onChange={props.handleOnChange}
             className="!outline-none w-full rounded"
           >
-            <option className="!outline-none" value="15 minutes">
+            <option className="bg-gray-800 !outline-none" value="15 minutes">
               15 minutes before
             </option>
-            <option
-              className="!outline-none"
-              value="30 minutes"
-              selected
-            >
+            <option className="bg-gray-800 !outline-none" value="30 minutes" selected>
               30 minutes before
             </option>
-            <option className="!outline-none" value="1 hour">
+            <option className="bg-gray-800 !outline-none" value="1 hour">
               1 hour before
             </option>
-            <option className="!outline-none" value="2 hours">
+            <option className="bg-gray-800 !outline-none" value="2 hours">
               2 hours before
             </option>
-            <option className="!outline-none" value="1 day">
+            <option className="bg-gray-800 !outline-none" value="1 day">
               1 day before
             </option>
-            <option className="!outline-none" value="3 days">
+            <option className="bg-gray-800 !outline-none" value="3 days">
               3 days before
             </option>
-            <option className="!outline-none" value="1 week">
+            <option className="bg-gray-800 !outline-none" value="1 week">
               1 week before
             </option>
           </select>
